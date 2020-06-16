@@ -14,9 +14,8 @@ app.use(function (req, res) {
 });
 
 app.use(function (err, req, res) {
+    console.error(err)
     res.status(500).send('Something broke!');
 });
-
-app.get('/', (req, res) => res.send('Hello World!'))
 
 module.exports = app

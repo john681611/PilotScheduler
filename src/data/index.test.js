@@ -1,4 +1,4 @@
-const data = require('./data');
+const data = require('./');
 const fs = require('fs');
 const path = require('path');
 
@@ -66,6 +66,5 @@ describe('getData', function () {
         fs.readFileSync.mockReturnValue('[{"date":"2019-01-28"}]');
         const after = data.getData();
         expect(after).not.toEqual(inital);
-        expect(after.servers).toEqual(inital.servers);
     });
 })
