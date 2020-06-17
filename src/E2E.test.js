@@ -44,6 +44,19 @@ describe('E2E', () => {
         pilotId = response.body.pilotId
     });
 
+    it('should book the flight for me with that pilot', async () => {
+        const response = await request(app)
+        .post('/book')
+        .send({...booking, pilotId})
+        .expect(200)
+        expect(response.body).toEqual({...booking, pilotId})
+    });
+
+    it('should have my booking in the data', () => {
+        const {bookings} = getData()
+        expect(bookings[pilotId]).toContainEqual(booking)
+    });
+
     it('should reject no pilot in city', async () => {
         const response = await request(app)
         .post('/availability')
@@ -52,25 +65,11 @@ describe('E2E', () => {
         expect(response.text).toBe('Request could not be fullfilled')
     });
 
-    it('should book the flight for me with that pilot', async () => {
-        const response = await request(app)
-        .post('/book')
-        .send({...booking, pilotId})
-        .expect(200)
-        expect(response.body).toEqual(booking)
-    });
-
     it('should reject a repeated booking request', async () => {
         const response = await request(app)
         .post('/book')
         .send({...booking, pilotId})
         .expect(500)
         expect(response.text).toBe('Request could not be fullfilled')
-    });
-
-    it('should have my booking in the data', () => {
-        const {bookings} = getData()
-        console.log(pilotId)
-        expect(bookings[pilotId]).toContainEqual(booking)
     });
 });
