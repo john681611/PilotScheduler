@@ -14,6 +14,12 @@ describe('book', () => {
                     Name: "Andy",
                     Base: "Munich",
                     WorkDays: ["Monday", "Tuesday", "Thursday", "Saturday"]
+                },
+                {
+                    ID: 2,
+                    Name: "Andy",
+                    Base: "Berlin",
+                    WorkDays: ["Monday", "Tuesday", "Thursday", "Saturday"]
                 }
             ],
             bookings: {
@@ -30,6 +36,22 @@ describe('book', () => {
         saveFile.mockClear()
     });
 
+    it('should with unused pilot and return true', () => {
+        const booking = {
+            pilotId: 2,
+            location: 'Berlin',
+            depDateTime: moment(defaultDate).hours(4),
+            returnDateTime: moment(defaultDate).hours(8)
+        }
+        expect(book(booking)).toBe(true)
+        expect(saveFile.mock.calls[0][0][2]).toEqual([{
+            location: booking.location,
+            depDateTime: booking.depDateTime,
+            returnDateTime: booking.returnDateTime
+        }])
+        expect(saveFile.mock.calls[0][1]).toEqual(BOOKINGS_FILE)
+    });
+
     it('should book a valid pilot and return true', () => {
         const booking = {
             pilotId: 1,
@@ -38,11 +60,11 @@ describe('book', () => {
             returnDateTime: moment(defaultDate).hours(8)
         }
         expect(book(booking)).toBe(true)
-        expect(saveFile.mock.calls[0][0]).toEqual({1:[{
+        expect(saveFile.mock.calls[0][0][1]).toContainEqual({
             location: booking.location,
             depDateTime: booking.depDateTime,
             returnDateTime: booking.returnDateTime
-        }]})
+        })
         expect(saveFile.mock.calls[0][1]).toEqual(BOOKINGS_FILE)
     });
 

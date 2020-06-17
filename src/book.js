@@ -10,10 +10,10 @@ module.exports = request => {
         depDateTime: request.depDateTime,
         returnDateTime: request.returnDateTime
     }
-    if(bookings[request.pilotId]) {
-        bookings[request.pilotId] = [booking]
-    } else {
+    if(request.pilotId in bookings) {
         bookings[request.pilotId].push(booking)
+    } else {
+        bookings[request.pilotId] = [booking]
     }
     saveFile(bookings, BOOKINGS_FILE)
     return true

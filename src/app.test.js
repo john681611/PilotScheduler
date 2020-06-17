@@ -12,7 +12,7 @@ describe('/availability', () => {
         availability.mockClear()
     });
     it('should respond 400 to no body', async () => {
-        const response = await request(app)
+        await request(app)
         .post('/availability')
         .send(null)
         .expect(400)
@@ -51,7 +51,7 @@ describe('/book', () => {
     });
 
     it('should respond 400 to no body', async () => {
-        const response = await request(app)
+        await request(app)
         .post('/book')
         .send(null)
         .expect(400)
@@ -89,13 +89,13 @@ describe('/book', () => {
 
 describe('misc', () => {
     it('should respond 404 to unknown method', async () => {
-        const response = await request(app)
+        await request(app)
         .get('/availability')
         .expect(404)
     });
 
     it('should respond 404 to method url', async () => {
-        const response = await request(app)
+        await request(app)
         .get('/random')
         .expect(404)
     });

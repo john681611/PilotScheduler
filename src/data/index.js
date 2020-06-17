@@ -16,7 +16,7 @@ const getFile = (file) => {
 };
 
 const getData = () => ({
-    crew: getFile(CREW_FILE),
+    crew: getFile(CREW_FILE).Crew,
     bookings: getFile(BOOKINGS_FILE)
 })
 

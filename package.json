@@ -4,8 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "test": "jest --no-cache"
+    "start": "node start.js",
+    "test": "jest --no-cache --runInBand",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
   },
   "devDependencies": {
     "eslint": "^7.2.0",
+    "eslint-plugin-jest": "^23.13.2",
     "jest": "^26.0.1",
     "supertest": "^4.0.2"
   }

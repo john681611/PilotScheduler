@@ -10,6 +10,6 @@ module.exports = (pilotObj, request, bookings) => {
     return pilotObj.Base === request.location &&
     pilotObj.WorkDays.includes(moment(request.depDateTime).format('dddd')) &&
     pilotObj.WorkDays.includes(moment(request.returnDateTime).format('dddd')) &&
-    !bookings[pilotObj.ID].find(booking => existingBooking(booking, request))
+    !(bookings[pilotObj.ID] && bookings[pilotObj.ID].find(booking => existingBooking(booking, request)))
 
 }

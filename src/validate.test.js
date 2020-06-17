@@ -101,9 +101,28 @@ describe('validate', () => {
         }, bookings)).toBe(true)
     });
 
-    it('should return true given good location, workingDate and after bookings', () => {
+    it('should return true given good location, workingDate and before bookings', () => {
         expect(validate(pilotObj, {
             location: 'Munich',
+            depDateTime: moment(defaultDate).hours(7),
+            returnDateTime: moment(defaultDate).hours(8) //BST
+        }, bookings)).toBe(true)
+    });
+
+    it('should return true if pilot has no bookings', () => {
+        const pilotObj2 =  {
+            ID: 2,
+            Name: 'Andy',
+            Base: 'Berlin',
+            WorkDays: [
+              'Monday',
+              'Tuesday',
+              'Thursday',
+              'Saturday'
+            ]
+          }
+        expect(validate(pilotObj2, {
+            location: 'Berlin',
             depDateTime: moment(defaultDate).hours(13),
             returnDateTime: moment(defaultDate).hours(14) //BST
         }, bookings)).toBe(true)
