@@ -1,0 +1,64 @@
+{
+	"info": {
+		"_postman_id": "d9c22650-bfca-45dd-a4ac-bc04237ed12f",
+		"name": "booking",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:3000/book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"pilotId\": 1,\n    \"location\": \"Munich\",\n    \"depDateTime\": \"2020-04-02T03:00:00.000Z\",\n    \"returnDateTime\": \"2020-04-02T07:00:00.000Z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/book",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/availability",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"location\": \"Munich\",\n    \"depDateTime\": \"2020-04-02T03:00:00.000Z\",\n    \"returnDateTime\": \"2020-04-02T07:00:00.000Z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/availability",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"availability"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
