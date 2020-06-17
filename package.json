@@ -23,6 +23,7 @@
     "moment": "^2.26.0"
   },
   "devDependencies": {
+    "eslint": "^7.2.0",
     "jest": "^26.0.1",
     "supertest": "^4.0.2"
   }

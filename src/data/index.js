@@ -1,8 +1,8 @@
  
 const {writeFileSync, readFileSync} = require('fs');
 const {resolve} = require('path');
-const CREW_FILE = './data/Crew.json',
-BOOKINGS_FILE = './data/Bookings.json'
+const CREW_FILE = './src/data/Crew.json',
+BOOKINGS_FILE = './src/data/Bookings.json'
 const findIndex = (obj, id) => {
     return obj.findIndex(el => el.id.toString() === id.toString());
 };

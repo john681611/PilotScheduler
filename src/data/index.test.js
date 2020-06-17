@@ -49,8 +49,8 @@ describe('getData', function () {
 
     it('should return a set of objects', function () {
         const expectedCalls = [
-            './data/Crew.json',
-            './data/Bookings.json'
+            './src/data/Crew.json',
+            './src/data/Bookings.json'
         ];
 
         const result = data.getData();
